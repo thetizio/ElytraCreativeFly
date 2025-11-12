@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "elytracreativefly",
+	"version": "${version}",
+	"name": "Elytra Creative Fly",
+	"description": "Equipping an elytra gives creative fly",
+	"authors": [
+		"TheTizio"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.tizio.elytracreativefly.ElytraCreativeFly"
+		]
+	},
+	"mixins": [
+		"elytracreativefly.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
