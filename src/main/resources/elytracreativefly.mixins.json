@@ -3,7 +3,8 @@
 	"package": "com.tizio.elytracreativefly.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"CreativeFly"
+		"ChangeFlyOnEquip",
+		"FlyAfterGamemodeSwitch"
 	],
 	"injectors": {
 		"defaultRequire": 1
