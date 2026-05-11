@@ -1,10 +1,10 @@
 package com.tizio.elytracreativefly.mixin;
 
+import com.tizio.elytracreativefly.ElytraCreativeFly;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ public class ChangeFlyOnEquip {
 
 		if (entity instanceof PlayerEntity player && slot == EquipmentSlot.CHEST) {
 
-			if (newStack.getItem() == Items.ELYTRA) {
+			if (newStack.isIn(ElytraCreativeFly.ELYTRAS)) {
 				player.getAbilities().allowFlying = true;
 				player.sendAbilitiesUpdate();
 			} else {

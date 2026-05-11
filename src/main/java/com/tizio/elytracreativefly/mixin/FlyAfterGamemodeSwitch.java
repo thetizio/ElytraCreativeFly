@@ -1,7 +1,6 @@
 package com.tizio.elytracreativefly.mixin;
 
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.Items;
+import com.tizio.elytracreativefly.ElytraCreativeFly;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.world.GameMode;
@@ -21,9 +20,6 @@ public class FlyAfterGamemodeSwitch {
 
     @Inject(method = "setGameMode", at = @At("TAIL"))
     private void onChange(GameMode gameMode, GameMode previousGameMode, CallbackInfo ci) {
-        if (this.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA){
-            this.player.getAbilities().allowFlying = true;
-            this.player.sendAbilitiesUpdate();
-        }
+        ElytraCreativeFly.checkElytraAndFly(this.player);
     }
 }
