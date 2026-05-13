@@ -15,7 +15,7 @@ public class ChangeFlyOnEquip {
 
     @Inject(method = "onEquipItem", at = @At("TAIL"))
     private void onEquipItem(EquipmentSlot slot, ItemStack oldItem, ItemStack newItem, CallbackInfo ci){
-        if (oldItem == newItem) return;
+        if (oldItem.toString().equals(newItem.toString())) return;
 
         LivingEntity entity = (LivingEntity) (Object) this;
 
