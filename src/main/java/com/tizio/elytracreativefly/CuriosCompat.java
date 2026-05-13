@@ -40,7 +40,7 @@ public class CuriosCompat {
                     public void onUnequip(SlotContext slotContext, ItemStack newStack) {
                         LivingEntity entity = slotContext.entity();
                         if (entity instanceof Player player){
-                            if (!hasElytra(player)){
+                            if (!player.getInventory().getArmor(2).is(ElytraCreativeFly.ELYTRAS)){
                             player.getAbilities().mayfly = false;
                             player.getAbilities().flying = false;
                             player.onUpdateAbilities();

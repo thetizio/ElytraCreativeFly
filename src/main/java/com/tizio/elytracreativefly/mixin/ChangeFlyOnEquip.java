@@ -1,5 +1,6 @@
 package com.tizio.elytracreativefly.mixin;
 
+import com.tizio.elytracreativefly.CuriosCompat;
 import com.tizio.elytracreativefly.ElytraCreativeFly;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,20 +16,23 @@ public class ChangeFlyOnEquip {
 
     @Inject(method = "onEquipItem", at = @At("TAIL"))
     private void onEquipItem(EquipmentSlot slot, ItemStack oldItem, ItemStack newItem, CallbackInfo ci){
-        if (oldItem.toString().equals(newItem.toString())) return;
+        if (slot == EquipmentSlot.CHEST){
 
-        LivingEntity entity = (LivingEntity) (Object) this;
+            LivingEntity entity = (LivingEntity) (Object) this;
+            if (entity instanceof Player player){
 
-        if (entity instanceof Player player && slot == EquipmentSlot.CHEST) {
+                if ((ElytraCreativeFly.CURIOS_LOADED && !CuriosCompat.hasElytra(player)) || !ElytraCreativeFly.CURIOS_LOADED){
 
-            if (newItem.is(ElytraCreativeFly.ELYTRAS)) {
-                player.getAbilities().mayfly = true;
-                player.onUpdateAbilities();
-            } else {
-                if (!player.isCreative() && !player.isSpectator()) {
-                    player.getAbilities().mayfly = false;
-                    player.getAbilities().flying = false;
-                    player.onUpdateAbilities();
+                    if (newItem.is(ElytraCreativeFly.ELYTRAS)) {
+                        player.getAbilities().mayfly = true;
+                        player.onUpdateAbilities();
+                    } else {
+                        if (!player.isCreative() && !player.isSpectator()) {
+                            player.getAbilities().mayfly = false;
+                            player.getAbilities().flying = false;
+                            player.onUpdateAbilities();
+                        }
+                    }
                 }
             }
         }
