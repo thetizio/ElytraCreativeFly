@@ -3,6 +3,7 @@ package com.tizio.elytracreativefly;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.Trinket;
 import dev.emi.trinkets.api.TrinketsApi;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -24,9 +25,11 @@ public class TrinketsCompat {
             @Override
             public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
                 if (entity instanceof PlayerEntity player) {
-                    player.getAbilities().allowFlying = false;
-                    player.getAbilities().flying = false;
-                    player.sendAbilitiesUpdate();
+                    if (!player.getEquippedStack(EquipmentSlot.CHEST).isIn(ElytraCreativeFly.ELYTRAS)) {
+                        player.getAbilities().allowFlying = false;
+                        player.getAbilities().flying = false;
+                        player.sendAbilitiesUpdate();
+                    }
                 }
             }
         });
