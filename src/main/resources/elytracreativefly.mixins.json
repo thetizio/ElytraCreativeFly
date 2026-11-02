@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.tizio.elytracreativefly.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ChangeFlyOnEquip",
+    "FlyAfterGamemodeSwitch"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}
