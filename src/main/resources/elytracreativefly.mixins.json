@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.tizio.elytracreativefly.mixin",
+  "refmap": "mixins.elytracreativefly.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "FlyAfterGamemodeSwitch"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
